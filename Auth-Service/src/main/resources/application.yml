@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: authservice
+  config:
+    import: optional:configserver:http://localhost:8888
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/jwt_security
+#    username: postgres
+#    password: Hao2022Trung
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+application:
+  security:
+    jwt:
+      secret-key: SGFvMjAyMlRydW5nSGFvMjAyMlRydW5nSGFvMjAyMlRydW5n
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+
