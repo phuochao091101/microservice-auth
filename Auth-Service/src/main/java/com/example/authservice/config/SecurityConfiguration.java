@@ -43,7 +43,7 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/register","/authenticate","/swagger-ui","/swagger-ui/**","/refresh-token",   "/api/v1/auth/**",
+                        "auth/register","auth/authenticate","/swagger-ui","/swagger-ui/**","auth/refresh-token",   "/api/v1/auth/**",
                         "/v2/api-docs",
                         "/v3/api-docs",
                         "/v3/api-docs/**",

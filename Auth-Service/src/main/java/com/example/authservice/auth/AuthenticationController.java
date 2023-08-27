@@ -7,14 +7,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("auth")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
     private final UserService userService;
@@ -37,5 +36,10 @@ public class AuthenticationController {
             HttpServletResponse response
     ) throws IOException {
         authenticationService.refreshToken(request, response);
+    }
+    @GetMapping("/validate-token")
+    public ResponseEntity<?> validToken(){
+        System.out.println("Valid Token");
+        return ResponseEntity.ok("Valid Token");
     }
 }

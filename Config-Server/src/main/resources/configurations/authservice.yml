@@ -2,15 +2,15 @@ eureka:
   instance:
     hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instant.hostname}:${server.port}/eureka/
+      defaultZone: http://localhost:8761/eureka/
 server:
   port: 8082
   error:
     include-message: always
 spring:
+  application:
+    name: authservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/jwt_security
@@ -20,5 +20,8 @@ spring:
     hibernate.ddl-auto: create
     generate-ddl: true
     show-sql: true
-  application:
-    name: authservice
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
