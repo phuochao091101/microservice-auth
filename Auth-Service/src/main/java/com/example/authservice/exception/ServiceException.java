@@ -19,5 +19,4 @@ public class ServiceException extends ErrorResponseException {
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;
     }
-
 }

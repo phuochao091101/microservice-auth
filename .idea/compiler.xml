@@ -16,7 +16,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Security_JWT" target="17" />
+      <module name="APIgateway" target="17" />
+      <module name="Auth-Service" target="17" />
+      <module name="Config-Server" target="17" />
+      <module name="Discovery-Server" target="17" />
+      <module name="School" target="17" />
+      <module name="Student" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -26,7 +31,6 @@
       <module name="Config-Server" options="-parameters" />
       <module name="Discovery-Server" options="-parameters" />
       <module name="School" options="-parameters" />
-      <module name="Security_JWT" options="-parameters" />
       <module name="Student" options="-parameters" />
     </option>
   </component>

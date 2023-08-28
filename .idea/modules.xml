@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/APIgateway/APIgateway.iml" filepath="$PROJECT_DIR$/APIgateway/APIgateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Auth-Service/Auth-Service.iml" filepath="$PROJECT_DIR$/Auth-Service/Auth-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Config-Server/Config-Server.iml" filepath="$PROJECT_DIR$/Config-Server/Config-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Discovery-Server/Discovery-Server.iml" filepath="$PROJECT_DIR$/Discovery-Server/Discovery-Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/School/School.iml" filepath="$PROJECT_DIR$/School/School.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Student/Student.iml" filepath="$PROJECT_DIR$/Student/Student.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/microservice-auth.iml" filepath="$PROJECT_DIR$/.idea/microservice-auth.iml" />
     </modules>
   </component>

@@ -11,11 +11,16 @@ import com.example.authservice.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.ws.rs.ForbiddenException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -30,6 +35,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private  final UserRepository userRepository;
 
+    private final UserDetailsService userDetailsService;
     public AuthenticationResponse register(RegisterRequest request){
         if(userRepository.findByEmail(request.getEmail()).isPresent()){
             throw new ServiceException("Email Exits");
@@ -115,6 +121,23 @@ public class AuthenticationService {
                         .build();
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
+        }
+    }
+
+    public boolean validateToken(String token){
+        String userEmail="";
+        userEmail = jwtService.extractUsername(token);
+        if (userEmail != null) {
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            var isTokenValid=tokenRepository.findByToken(token).map(t->!t.isExpired()&&!t.isRevoked()).orElse(false);
+            if (jwtService.isTokenValid(token, userDetails)&&isTokenValid) {
+                System.out.println("Valid Token");
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return false;
         }
     }
 }
